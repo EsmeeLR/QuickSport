@@ -1,12 +1,16 @@
-
 public class QuickSort {
 
     // Método principal de QuickSort
     public static void quickSort(int[] arr, int inicio, int fin) {
         if (inicio < fin) {
             int indicePivote = particion(arr, inicio, fin);
-            quickSort(arr, inicio, indicePivote - 1);
-            quickSort(arr, indicePivote + 1, fin);  
+
+            // Mostrar el estado del arreglo después de cada partición
+            System.out.print("Partición con pivote en posición " + indicePivote + ": ");
+            imprimirArreglo(arr);
+
+            quickSort(arr, inicio, indicePivote - 1); // ordenar parte izquierda
+            quickSort(arr, indicePivote + 1, fin);   // ordenar parte derecha
         }
     }
 
@@ -18,7 +22,7 @@ public class QuickSort {
         for (int j = inicio; j < fin; j++) {
             if (arr[j] <= pivote) {
                 i++;
-                // aquí se hace un intercambio
+                // intercambio
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
